@@ -32,6 +32,7 @@ resource "aws_iam_role_policy_attachment" "ase-AmazonEKSVPCResourceController" {
 resource "aws_eks_cluster" "ase-eks" {
   name     = local.cluster_name
   role_arn = aws_iam_role.ase-eks-role.arn
+  enabled_cluster_log_types = var.enable_cluster_logging ? ["audit", "api", "authenticator", "scheduler", "controllerManager"] : []
 
   vpc_config {
     subnet_ids = [aws_subnet.public-subnet1.id, aws_subnet.public-subnet2.id]
