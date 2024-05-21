@@ -12,3 +12,9 @@ variable "public_subnet_cidr1" {
 variable "public_subnet_cidr2" {
   default = "10.0.1.0/24"
 }
+
+variable "enable_cluster_logging" {
+  type = bool
+  default = false
+  description = "Whether to enable cluster control plane logging"
+}
