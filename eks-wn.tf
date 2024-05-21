@@ -1,5 +1,5 @@
 resource "aws_iam_role" "ase-eks-wn-role" {
-  name = "ase-eks-node-group-role-${random_string.suffix.result}"
+  name = "ase-eks-node-group-role"
 
   assume_role_policy = jsonencode({
     Statement = [{
