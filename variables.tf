@@ -22,3 +22,14 @@ variable "enable_cluster_logs" {
 locals {
   cluster_log_types = var.enable_cluster_logs ? ["audit", "api", "authenticator", "scheduler", "controllerManager"] : []
 }
+
+variable "enable_encryption" {
+  description = "Enable encryption for Kubernetes secrets"
+  type        = bool
+  default     = false
+}
+
+variable "kms_key_arn" {
+  description = "KMS Key ARN for encrypting Kubernetes secrets"
+  type        = string
+}

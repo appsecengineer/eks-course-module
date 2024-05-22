@@ -33,6 +33,16 @@ resource "aws_eks_cluster" "ase-eks" {
   name     = local.cluster_name
   role_arn = aws_iam_role.ase-eks-role.arn
   enabled_cluster_log_types = local.cluster_log_types
+  
+  dynamic "encryption_config" {
+    for_each = var.enable_encryption ? [1] : []
+    content {
+      provider {
+        key_arn =  var.kms_key_arn
+      }
+      resources = ["secrets"]
+    }
+  }
 
   vpc_config {
     subnet_ids = [aws_subnet.public-subnet1.id, aws_subnet.public-subnet2.id]

@@ -21,3 +21,7 @@ output "ASE-EKS-wn-role-id" {
 output "random_output" {
   value = random_string.suffix.result
 }
+
+output "aws_eks_url" {
+    value = aws_eks_cluster.ase-eks.identity.0.oidc.0.issuer
+}
