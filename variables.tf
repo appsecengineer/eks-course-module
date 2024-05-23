@@ -32,4 +32,5 @@ variable "enable_encryption" {
 variable "kms_key_arn" {
   description = "KMS Key ARN for encrypting Kubernetes secrets"
   type        = string
+  default = "value will be provided when it is used"
 }
